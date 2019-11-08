@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "755034782015",
+    "firebase_url": "https://loja-virtual-app-kiu.firebaseio.com",
+    "project_id": "loja-virtual-app-kiu",
+    "storage_bucket": "loja-virtual-app-kiu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755034782015:android:a589626efffd3d4d883b8a",
+        "android_client_info": {
+          "package_name": "br.com.kiustudios.loja_virtual_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755034782015-3mf9k2gc63vll8851cntgi6e8gbe8o7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr0lF-wtgDi2gyDqW8CZ7iUaE2JjJuD94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755034782015-3mf9k2gc63vll8851cntgi6e8gbe8o7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
