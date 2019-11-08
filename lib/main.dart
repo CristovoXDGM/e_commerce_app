@@ -7,6 +7,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: HomeScreen(),
     theme: ThemeData(
+        dividerTheme: DividerThemeData(color: Colors.grey),
         primarySwatch: Colors.blue,
         primaryColor: Color.fromARGB(255, 4, 125, 141)),
   ));
