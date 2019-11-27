@@ -4,9 +4,9 @@ import 'package:loja_virtual_app/datas/product_data.dart';
 import 'package:loja_virtual_app/tiles/product_tile.dart';
 
 class CategoryScreen extends StatelessWidget {
-  final DocumentSnapshot snapshot;
-
   const CategoryScreen({Key key, this.snapshot}) : super(key: key);
+
+  final DocumentSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -38,21 +38,23 @@ class CategoryScreen extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
                     GridView.builder(
-                      padding: EdgeInsets.all(4),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        padding: EdgeInsets.all(4.0),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          crossAxisSpacing: 4,
-                          mainAxisSpacing: 4,
-                          childAspectRatio: 0.65),
-                      itemCount: snapshot.data.documents.length,
-                      itemBuilder: (context, index) {
-                        return ProductTile(
-                          type: "grid",
-                          data: ProductData.fromDocument(
-                              snapshot.data.documents[index]),
-                        );
-                      },
-                    ),
+                          mainAxisSpacing: 4.0,
+                          crossAxisSpacing: 4.0,
+                          childAspectRatio: 0.65,
+                        ),
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (context, index) {
+                          ProductData data = ProductData.fromDocument(
+                              snapshot.data.documents[index]);
+                          data.category = this.snapshot.documentID;
+                          return ProductTile(
+                            data: data,
+                            type: "grid",
+                          );
+                        }),
                     ListView.builder(
                       padding: EdgeInsets.all(4),
                       itemCount: snapshot.data.documents.length,
