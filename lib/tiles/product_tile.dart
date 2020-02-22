@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual_app/datas/product_data.dart';
+import 'package:loja_virtual_app/screens/product_screen.dart';
 
 class ProductTile extends StatelessWidget {
   final String type;
-  final ProductData data;
+  final ProductData product;
 
-  const ProductTile({Key key, this.type, this.data}) : super(key: key);
+  const ProductTile({Key key, this.type, this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ProductScreen(
+                    product: product,
+                  )));
+        },
         child: Card(
           child: type == 'grid'
               ? Column(
@@ -20,21 +26,53 @@ class ProductTile extends StatelessWidget {
                     AspectRatio(
                       aspectRatio: 0.8,
                       child: Image.network(
-                        data.images[0],
+                        product.images[0],
                         fit: BoxFit.cover,
                       ),
                     ),
-                    Expanded(
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            product.title,
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            "R\$ ${product.price.toStringAsFixed(2)}",
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              : Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Image.network(
+                        product.images[0],
+                        height: 300,
+                        alignment: Alignment.centerLeft,
+                      ),
+                      flex: 1,
+                    ),
+                    Flexible(
+                      flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(10),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              data.title,
+                              product.title,
                               style: TextStyle(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              "R\$ ${data.price.toStringAsFixed(2)}",
+                              "R\$ ${product.price.toStringAsFixed(2)}",
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontSize: 17,
@@ -45,8 +83,7 @@ class ProductTile extends StatelessWidget {
                       ),
                     )
                   ],
-                )
-              : Row(),
+                ),
         ));
   }
 }
