@@ -6,6 +6,7 @@ import 'package:loja_virtual_app/screens/signup_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(ScopedModel<UserModel>(
     model: UserModel(),
     child: MaterialApp(
